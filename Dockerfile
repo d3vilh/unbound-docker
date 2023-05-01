@@ -1,5 +1,4 @@
 FROM arm64v8/alpine 
-ARG GIT_BRANCH=main
 LABEL maintainer="Mr.Philipp <d3vilh@github.com>"
 RUN apk add --no-cache unbound
 RUN wget -S https://www.internic.net/domain/named.cache -O /etc/unbound/root.hints
