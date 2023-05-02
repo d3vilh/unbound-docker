@@ -9,7 +9,11 @@ RUN chmod 775 /var/log/unbound.log; chown root:unbound /var/log/unbound.log
 RUN chmod 775 /etc/unbound; chown root:unbound /etc/unbound
 
 # Uncomment to use embedded config. Better to use volume to pass the config file
-# i.e: docker run -d --interactive --tty --rm -p 53:5335 -p 53:5335/udp -v /home/unbound-docker/etc-unbound/unbound.conf:/etc/unbound/unbound.conf local/unbound:latest
+# i.e: docker run  --interactive --tty --rm -p 5335:5335 -p 5335:5335/udp \
+# -v /home/philipp/unbound-dns/etc-unbound/unbound.conf:/etc/unbound/unbound.conf \
+# -v /home/philipp/unbound-dns/log-unbound/unbound.log:/var/log/unbound.log \
+# -v /home/philipp/unbound-dns/etc-unbound/root.hints:/etc/unbound/root.hints \
+# local/unbound:latest
 
 #COPY ["/etc-unbound/unbound.conf", "/etc/unbound/"]
 
