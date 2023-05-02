@@ -9,8 +9,17 @@ docker build https://github.com/d3vilh/unbound-docker.git -t local/unbound
 
 ### Running
 ```bash
-docker run -d -p 53:53 -p 53:53/udp --restart=unless-stopped local/unbound
+docker run -d --rm \
+-p 53:5335 -p 53:5335/udp \
+-v /home/philipp/build/unbound-docker/etc-unbound/unbound.conf:/etc/unbound/unbound.conf \
+local/unbound:latest
 ```
+### Verification
+
+```bash
+dig github.com @192.168.88.9 -p 53
+```
+
 
 ### Running with own MAC & IP
 Running unbound with its own MAC and IP address on the network, allowing to serve the physical network directly.
